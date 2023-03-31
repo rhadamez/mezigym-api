@@ -8,13 +8,16 @@
     "lint:fix": "yarn lint --fix",
     "start:dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
-    "build": "tsup src --out-dir build"
+    "build": "tsup src --out-dir build",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/node": "^18.14.6",
     "@typescript-eslint/eslint-plugin": "5.54.1",
     "@typescript-eslint/parser": "5.54.1",
     "eslint": "8.35.0",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.0",
     "prisma": "4.11.0",
     "tsup": "^6.6.3",
     "tsx": "^3.12.3",
