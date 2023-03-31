@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  pg-mezigym:
+    container_name: mezigym-pg
+    image: bitnami/postgresql:14.7.0
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=mezigym
