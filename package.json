@@ -11,6 +11,7 @@
     "build": "tsup src --out-dir build",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -20,6 +21,7 @@
     "@types/node": "^18.14.6",
     "@typescript-eslint/eslint-plugin": "5.54.1",
     "@typescript-eslint/parser": "5.54.1",
+    "@vitest/coverage-c8": "0.31.0",
     "eslint": "8.35.0",
     "husky": "8.0.3",
     "lint-staged": "13.2.0",

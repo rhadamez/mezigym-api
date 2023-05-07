@@ -49,6 +49,6 @@ describe('Register Use Case', () => {
 
 		await registerUseCase.execute(userInput)
 
-		expect(() => registerUseCase.execute(userInput)).rejects.toBeInstanceOf(UserAlreadyExistsError)
+		await expect(() => registerUseCase.execute(userInput)).rejects.toBeInstanceOf(UserAlreadyExistsError)
 	})
 })
