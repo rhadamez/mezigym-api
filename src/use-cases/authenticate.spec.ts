@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 import { hash } from 'bcryptjs'
 import { UsersRepositoryInMemory } from '@/repositories/in-memory/users-repository-in-memory'
 import { AuthenticationUseCase } from './authenticate'
@@ -13,7 +13,7 @@ describe('Authenticate Use Case', () => {
 		sut = new AuthenticationUseCase(usersRepository)
 	})
 
-	test('should be able to authenticate', async () => {
+	it('should be able to authenticate', async () => {
 		await usersRepository.create({
 			name: 'Rhadamez',
 			email: 'rhadamez@gmail.com',
@@ -28,14 +28,14 @@ describe('Authenticate Use Case', () => {
 		expect(user.id).toEqual(expect.any(String))
 	})
 
-	test('should not be able to authenticate with wrong email', async () => {
+	it('should not be able to authenticate with wrong email', async () => {
 		await expect(sut.execute({
 			email: 'rhadamez@gmail.com',
 			password: '123321'
 		})).rejects.toBeInstanceOf(InvalidCredentialsError)
 	})
 
-	test('should not be able to authenticate with wrong password', async () => {
+	it('should not be able to authenticate with wrong password', async () => {
 		await usersRepository.create({
 			name: 'Rhadamez',
 			email: 'rhadamez@gmail.com',
