@@ -1,7 +1,7 @@
 import { afterAll, beforeEach, describe, expect, it, vi } from 'vitest'
 import { CheckInsRepository } from '@/repositories/check-ins-repository'
 import { CheckinUseCase } from './check-in'
-import { checkInsRepositoryInMemory } from '@/repositories/in-memory/check-ins-repository-in-memory'
+import { CheckInsRepositoryInMemory } from '@/repositories/in-memory/check-ins-repository-in-memory'
 import { GymsRepository } from '@/repositories/gyms-repository'
 import { GymInMemory } from '@/repositories/in-memory/gym-in-memory'
 import { MaxDistanceError } from './errors/max-distance-error'
@@ -13,7 +13,7 @@ describe('Check In Use Case', () => {
 	let sut: CheckinUseCase
 
 	beforeEach(async () => {
-		checkInsRepository = new checkInsRepositoryInMemory()
+		checkInsRepository = new CheckInsRepositoryInMemory()
 		gymsRepository = new GymInMemory()
 		sut = new CheckinUseCase(checkInsRepository, gymsRepository)
 
@@ -81,13 +81,9 @@ describe('Check In Use Case', () => {
 			userLongitude: -51.0853921
 		}
 
-		console.log(await sut.execute(userInput))
-
 		vi.setSystemTime(new Date(2023, 0, 21, 8, 0, 0))
 
 		const { checkIn } = await sut.execute(userInput)
-
-		console.log(checkIn)
 
 		expect(checkIn.id).toEqual(expect.any(String))
 	})
